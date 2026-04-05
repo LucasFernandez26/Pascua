@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta del Conejo de Pascua para Eliel</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background: #fef3e2;
+    background-image:
+      radial-gradient(circle at 20% 20%, #ffe0f0 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, #d4f5e2 0%, transparent 40%),
+      radial-gradient(circle at 60% 10%, #fff3b0 0%, transparent 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 20px;
+    font-family: 'Gaegu', cursive;
+  }
+
+  .paper {
+    background: #fffdf5;
+    max-width: 680px;
+    width: 100%;
+    border-radius: 18px;
+    padding: 50px 55px 45px;
+    box-shadow:
+      0 4px 0 #e8d9b0,
+      0 8px 0 #dfd0a8,
+      0 16px 40px rgba(0,0,0,0.12);
+    position: relative;
+    border: 2px solid #f0e6c8;
+    animation: floatIn 0.8s ease-out both;
+  }
+
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(30px) rotate(-1deg); }
+    to { opacity: 1; transform: translateY(0) rotate(0deg); }
+  }
+
+  /* Holes like a real paper pinned */
+  .paper::before {
+    content: '';
+    position: absolute;
+    top: 22px; left: 50%;
+    transform: translateX(-50%);
+    width: 12px; height: 12px;
+    background: #fef3e2;
+    border-radius: 50%;
+    border: 2px solid #ddd0b0;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  /* Decorative corner grass */
+  .corner-deco {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.35;
+    animation: sway 3s ease-in-out infinite alternate;
+  }
+  .corner-deco.tl { top: 12px; left: 16px; }
+  .corner-deco.tr { top: 12px; right: 16px; transform: scaleX(-1); }
+  .corner-deco.bl { bottom: 14px; left: 16px; }
+  .corner-deco.br { bottom: 14px; right: 16px; transform: scaleX(-1); }
+
+  @keyframes sway {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+  }
+  .corner-deco.tr { animation-direction: alternate-reverse; }
+
+  /* Header area */
+  .header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+
+  .bunny-face {
+    font-size: 5rem;
+    display: block;
+    animation: bounce 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    margin-bottom: 6px;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-8px) scale(1.05); }
+  }
+
+  .from-label {
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: #b59a6a;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .title {
+    font-family: 'Caveat', cursive;
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #7bc67e;
+    line-height: 1.1;
+    text-shadow: 2px 2px 0 rgba(123,198,126,0.15);
+  }
+
+  .subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: #f4a261;
+    margin-top: 2px;
+  }
+
+  /* Divider */
+  .divider {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.4rem;
+    letter-spacing: 6px;
+    opacity: 0.6;
+  }
+
+  /* Letter body */
+  .letter-body {
+    font-size: 1.35rem;
+    line-height: 1.9;
+    color: #4a3728;
+  }
+
+  .saludo {
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e07b54;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .letter-body p {
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .highlight {
+    background: linear-gradient(120deg, #fff3b0 0%, #ffe08a 100%);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    color: #7a5c00;
+  }
+
+  /* Clues section */
+  .clues-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #7bc67e;
+    text-align: center;
+    margin: 22px 0 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .clue-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+
+  .clue-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: linear-gradient(135deg, #fff8ee, #fff3e0);
+    border: 2px dashed #f4c07e;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    color: #5a3e28;
+    animation: fadeSlide 0.5s ease both;
+  }
+
+  .clue-item:nth-child(1) { animation-delay: 0.3s; }
+  .clue-item:nth-child(2) { animation-delay: 0.5s; }
+  .clue-item:nth-child(3) { animation-delay: 0.7s; }
+  .clue-item:nth-child(4) { animation-delay: 0.9s; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(-15px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .clue-number {
+    background: #f4a261;
+    color: white;
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .clue-emoji {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  /* Prize box */
+  .prize-box {
+    background: linear-gradient(135deg, #e8f8ea, #d4f5e2);
+    border: 2px solid #7bc67e;
+    border-radius: 14px;
+    padding: 16px 20px;
+    text-align: center;
+    margin: 10px 0 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .prize-box::before {
+    content: '✨';
+    position: absolute;
+    top: 8px; right: 12px;
+    font-size: 1.2rem;
+    animation: spin 4s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .prize-label {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: #4a9e5c;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .prize-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2e7d42;
+  }
+
+  /* Signature */
+  .signature {
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  .sign-closing {
+    font-size: 1.2rem;
+    color: #7a5c00;
+    margin-bottom: 6px;
+  }
+
+  .sign-name {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #e07b54;
+    display: block;
+    line-height: 1.1;
+  }
+
+  .sign-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    color: #b59a6a;
+    letter-spacing: 1px;
+  }
+
+  /* Eggs decoration row */
+  .eggs-row {
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    margin: 20px 0 8px;
+    animation: eggsAppear 1s ease both;
+  }
+
+  @keyframes eggsAppear {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .eggs-row span {
+    display: inline-block;
+    animation: eggBob 2s ease-in-out infinite;
+  }
+  .eggs-row span:nth-child(2) { animation-delay: 0.3s; }
+  .eggs-row span:nth-child(3) { animation-delay: 0.6s; }
+  .eggs-row span:nth-child(4) { animation-delay: 0.9s; }
+  .eggs-row span:nth-child(5) { animation-delay: 1.2s; }
+
+  @keyframes eggBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  /* Print button */
+  .print-btn {
+    display: block;
+    margin: 24px auto 0;
+    background: linear-gradient(135deg, #7bc67e, #4aab6d);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 32px;
+    font-family: 'Caveat', cursive;
+    font-size: 1.3rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #2e7d42, 0 6px 12px rgba(75,171,109,0.3);
+    transition: all 0.15s;
+    letter-spacing: 0.5px;
+  }
+
+  .print-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 0 #2e7d42, 0 10px 18px rgba(75,171,109,0.35); }
+  .print-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 #2e7d42; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .paper { box-shadow: none; border: 1px solid #ddd; }
+    .print-btn { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .paper { padding: 40px 28px 36px; }
+    .title { font-size: 2rem; }
+    .letter-body { font-size: 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper">
+  <span class="corner-deco tl">🌿</span>
+  <span class="corner-deco tr">🌿</span>
+  <span class="corner-deco bl">🌸</span>
+  <span class="corner-deco br">🌸</span>
+
+  <div class="header">
+    <span class="bunny-face">🐰</span>
+    <div class="from-label">Una carta especial de</div>
+    <div class="title">El Conejo de Pascua</div>
+    <div class="subtitle">🥕 Enviada con mucho amor 🥕</div>
+  </div>
+
+  <div class="divider">🌸 🌷 🌸</div>
+
+  <div class="letter-body">
+    <span class="saludo">¡Hola, Eliel! 🐣</span>
+
+    <p>
+      ¡Llegué esta mañana saltando desde muy lejos, con mis orejas llenas de alegría y mi canasta repleta de sorpresas! 🌈
+    </p>
+
+    <p>
+      Este año decidí algo especial: <span class="highlight">¡escondí los huevos de Pascua solo para vos!</span> Cada uno tiene una sorpresa adentro, y los coloqué en lugares muy especiales de tu casa. 🏠
+    </p>
+
+    <p>
+      Pero hay una cosa... ¡tenés que encontrarlos siguiendo mis pistas de conejito! ¿Estás listo para la aventura? 🗺️
+    </p>
+
+    <div class="clues-title">🥚 Las Pistas Mágicas 🥚</div>
+
+    <ul class="clue-list">
+      <li class="clue-item">
+        <span class="clue-number">1</span>
+        <span class="clue-emoji">📚</span>
+        <span>El primer huevo está en el lugar donde sos más inteligente... ¡donde te sentás a estudiar y aprender! Revisá bien tu espacio de trabajo. 🧠</span>
+      </li>
+      <li class="clue-item">
+        <span class="clue-number">2</span>
+        <span class="clue-emoji">👔</span>
+        <span>El segundo se metió entre la ropa de papá. ¡Abrí su ropero y buscá bien, pero con cuidado de no desordenar mucho! 😄</span>
+      </li>
+      <li class="clue-item">
+        <span class="clue-number">3</span>
+        <span class="clue-emoji">🌤️</span>
+        <span>El tercero está afuera, en el patiecito. Salí a explorar cada rincón, que un huevito se escondió ahí a tomar aire fresco. 🐛</span>
+      </li>
+      <li class="clue-item">
+        <span class="clue-number">4</span>
+        <span class="clue-emoji">🎽</span>
+        <span>¡El último y más grande te está esperando en TU propia ropa! Buscá bien entre tus prendas... ¡es el huevo gigante! 🥚✨</span>
+      </li>
+    </ul>
+
+    <div class="prize-box">
+      <div class="prize-label">🌟 El gran secreto 🌟</div>
+      <div class="prize-text">¡El que encuentre todos los huevos<br>gana un premio sorpresa! 🎁</div>
+    </div>
+
+    <p>
+      Recuerda: <span class="highlight">cada huevo tiene chocolate y magia adentro</span>, porque vos sos un niño muy especial y te lo merecés. ❤️
+    </p>
+
+    <p>
+      Ahora sí... ¡que empiece la búsqueda! Yo ya estoy de regreso en mi bosque, pero te estaré mirando desde lejos con mis grandes orejitas. 🐇
+    </p>
+  </div>
+
+  <div class="eggs-row">
+    <span>🥚</span><span>🟡</span><span>🥚</span><span>🟠</span><span>🥚</span>
+  </div>
+
+  <div class="signature">
+    <p class="sign-closing">Con todo el cariño del mundo,</p>
+    <span class="sign-name">El Conejo de Pascua 🐰</span>
+    <span class="sign-title">🥕 Guardián de los Huevos Mágicos 🥕</span>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">🖨️ Imprimir carta</button>
+</div>
+
+</body>
+</html>
